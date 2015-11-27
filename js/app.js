@@ -1,6 +1,8 @@
 // Enemies our player must avoid
-var Enemy = function() {
-    // Variables applied to each of our instances go here,
+var Enemy = function(x, y, speed) {
+    this.x = x;
+    this.y = y;
+    this.speed = speed;//ariables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
@@ -10,7 +12,8 @@ var Enemy = function() {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function(dt, speed) {
+    this.x = this.x + this.speed;
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -24,13 +27,54 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+var player = function (x, y) {
+    this.x = x;
+    this.y = y;
+    this.sprite = 'images/char-boy.png';
+};
+
+player.prototype.update = function() {
+    // this.x = this.x + this.changeX;
+    // this.y = this.y + this.changeY;
+};
+
+player.prototype.handleInput = function(moveDirection) {
+    switch(moveDirection) {
+  case 'left':
+    this.x = this.x -100;
+    break;
+
+  case 'right':
+    this.x = this.x + 100;
+    break;
+
+  case 'up':
+    this.y = this.y - 80;
+    break;
+
+      case 'down':
+    this.y = this.y + 80;
+    // break;
+  // default:
+  //   ...
+  //   [break]
+}
+};
+
+player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-
+var enemy1 = new Enemy(0, 50, 2);
+var enemy2 = new Enemy(0, 150, 1);
+var enemy3 = new Enemy(0, 350, 3);
+var allEnemies = [enemy1, enemy2, enemy3];
+var player = new player(200, 375);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
