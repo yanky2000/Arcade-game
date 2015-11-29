@@ -94,7 +94,11 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
+        allFriends.forEach(function(friend) {
+            friend.update(dt);
+        });
         player.update();
+        scoreUpdate();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -103,6 +107,7 @@ var Engine = (function(global) {
      * they are flipbooks creating the illusion of animation but in reality
      * they are just drawing the entire screen over and over.
      */
+
     function render() {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
@@ -138,6 +143,7 @@ var Engine = (function(global) {
 
 
         renderEntities();
+        renderScore();
     }
 
     /* This function is called by the render function and is called on each game
@@ -150,6 +156,14 @@ var Engine = (function(global) {
          */
         allEnemies.forEach(function(enemy) {
             enemy.render();
+        });
+
+        allFriends.forEach(function(friend) {
+            friend.render();
+        });
+
+        allGems.forEach(function(gem) {
+            gem.render();
         });
 
         player.render();
@@ -172,7 +186,15 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Star.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png',
+        'images/Gem Blue.png',
+        'images/Gem Green.png',
+        'images/Gem Orange.png'
     ]);
     Resources.onReady(init);
 
