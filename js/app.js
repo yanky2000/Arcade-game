@@ -47,14 +47,14 @@ Enemy.prototype.update = function(dt) {
             this.speed = randomInteger(1, 4);
         } else {
             allEnemies.splice(find(allEnemies, this), 1);
-        };
+        }
 
         //Number of bugs used as a time concept for Princess creation.
         bugCount++;
         if (bugCount == timeForFriend) {
             createFriend();
-        };
-    };
+        }
+    }
 
     this.x = this.x + this.speed * dt * 100;
 };
@@ -85,13 +85,13 @@ Friend.prototype.update = function(dt) {
     if (this.x > rawEndPoint) {
         friendSetTimer();
         allFriends = [];
-    };
+    }
 
     this.x = this.x + this.speed * dt * 100;
 };
 
 var createFriend = function() {
-    var friend = new Friend;
+    var friend = new Friend();
     allFriends.push(friend);
 };
 
@@ -117,7 +117,7 @@ player.prototype.update = function() {
         enemyNumberTotal++;
         createEnemy(1);
         score += 50;
-    };
+    }
 
     //BUG hits the player
     for (var i = 0; i < allEnemies.length; i++) {
@@ -125,12 +125,12 @@ player.prototype.update = function() {
             goToStart.call(this);
             if (score > 0) {
                 score -= 5;
-            };
+            }
         }
-    };
+    }
 
     //player picks up gem and scores
-    for (var i = 0; i < allGems.length; i++) {
+    for (i = 0; i < allGems.length; i++) {
         if (collision(this.x, this.y, allGems[i].x, allGems[i].y)) {
             switch (allGems[i].sprite) {
                 case 'images/Gem Blue.png':
@@ -149,10 +149,10 @@ player.prototype.update = function() {
                 enemyNumberTotal -= 1;
             }
         }
-    };
+    }
 
     //if player meets Friend, gem appears
-    for (var i = 0; i < allFriends.length; i++) {
+    for (i = 0; i < allFriends.length; i++) {
         if (collision(this.x, this.y, allFriends[i].x, allFriends[i].y)) {
             allFriends = [];
             new Gem();
@@ -208,7 +208,7 @@ function randomInteger(min, max) {
     var rand = min + Math.random() * (max + 1 - min);
     rand = Math.floor(rand);
     return rand;
-};
+}
 
 //Collision check
 var collision = function(playerX, playerY, x2, y2) {
