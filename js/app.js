@@ -1,5 +1,4 @@
 var app = app || {
-    
     enemyNumberTotal: 3,
     allEnemies: [],
     allFriends: [],
@@ -8,7 +7,6 @@ var app = app || {
         raws: [-25, 55, 135, 215, 295, 375],
         columns: [0, 100, 200, 300, 400],
     },
-
     bugCount: 0,
     timeForFriend: 0,
     score: 0,
