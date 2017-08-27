@@ -287,6 +287,7 @@ document.addEventListener('keyup', function (e) {
 });
 
 
+// launch code
 var player = new player();
 createEnemy(app.enemyNumberTotal);
 createFriend();
