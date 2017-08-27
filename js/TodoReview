@@ -1,7 +1,0 @@
-// Sunday 11/29/15 at 12:25AM - 2 files in 0.09 secs
-
-## TODO (6)
-2. js/app.js:38    make collectable items (spawn if player just escaped the bug, gem color depends on speed of evaded bug)
-4. js/app.js:40    add friends (girl vs boy) - adds lives
-5. js/app.js:41    add scoring system
-6. js/app.js:108   add difficulty level (enemy number choice)
